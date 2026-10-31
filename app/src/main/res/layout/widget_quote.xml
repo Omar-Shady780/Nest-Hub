@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Daily Wisdom"
+            android:textColor="@color/nest_primary"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/btnRefreshQuote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next ↺"
+            android:textColor="@color/nest_accent_cyan"
+            android:textSize="12sp"
+            android:padding="2dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/quoteText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="&quot;Peace comes from within. Do not seek it without.&quot;"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:fontFamily="sans-serif-light"
+        android:fontStyle="italic" />
+
+    <TextView
+        android:id="@+id/quoteAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="— Buddha"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:gravity="end" />
+</LinearLayout>
+

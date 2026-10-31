@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nest Bedside Hub</string>
+    <string name="swipe_hint">Swipe up / down for full screen clocks</string>
+    <string name="pinch_hint">Pinch to customize widget</string>
+    <string name="settings">Settings</string>
+    <string name="grid_layout">Grid Layout</string>
+    <string name="grid_2x2">2 × 2 Grid (Large)</string>
+    <string name="grid_3x3">3 × 3 Grid (Compact)</string>
+    <string name="background">Background &amp; Theme</string>
+    <string name="keep_screen_on">Keep Screen On (Bedside Dock)</string>
+    <string name="night_mode_red">Bedtime Red Shift Filter</string>
+    <string name="dynamic_bg">Dynamic Time/Weather Theme</string>
+    <string name="device_wallpaper">Copy Device Wallpaper</string>
+    <string name="custom_image">Import Custom Photo</string>
+    <string name="gemini_assistant">Google Gemini</string>
+    <string name="alarm">Alarms</string>
+    <string name="timer">Timers</string>
+    <string name="stopwatch">Stopwatch</string>
+    <string name="weather">Weather</string>
+    <string name="calendar">Calendar</string>
+    <string name="battery">Battery</string>
+    <string name="bluetooth">Bluetooth Devices</string>
+    <string name="ambient_sounds">Sleep Sounds</string>
+    <string name="daily_routine">Daily Routine</string>
+    <string name="notes">Bedside Notes</string>
+    <string name="quotes">Daily Wisdom</string>
+    <string name="world_clock">World Clock</string>
+    <string name="water_tracker">Hydration</string>
+    <string name="sun_moon">Sun &amp; Moon</string>
+    <string name="system_monitor">System Stats</string>
+    <string name="calculator">Calculator</string>
+    <string name="photo_frame">Photo Frame</string>
+    <string name="quick_toggles">Quick Controls</string>
+    <string name="media_player">Media Player</string>
+</resources>
+

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/nest_dark_bg"
+    android:keepScreenOn="true">
+
+    <!-- Dynamic Background Container (Gradients, Wallpaper, Photos) -->
+    <ImageView
+        android:id="@+id/bgImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="Background" />
+
+    <!-- Subtle Vignette / Gradient Overlay -->
+    <View
+        android:id="@+id/bgDimOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000" />
+
+    <!-- Main Content View Flipper (Cycles on Vertical Swipe) -->
+    <ViewFlipper
+        android:id="@+id/mainViewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Screen 0: Main Interactive Widgets Dashboard -->
+        <FrameLayout
+            android:id="@+id/dashboardScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Top Header Status Bar -->
+            <LinearLayout
+                android:id="@+id/topStatusBar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp">
+
+                <!-- Nest Logo / Ambient Tag -->
+                <TextView
+                    android:id="@+id/headerTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Google Nest"
+                    android:textColor="@color/nest_primary"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.05" />
+
+                <TextView
+                    android:id="@+id/headerDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Friday, Oct 30"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Bluetooth Indicator -->
+                <LinearLayout
+                    android:id="@+id/headerBluetoothContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="16dp"
+                    android:visibility="gone">
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_bluetooth" />
+                    <TextView
+                        android:id="@+id/headerBluetoothText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Connected"
+                        android:textColor="@color/nest_accent_cyan"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Battery Indicator (Device) -->
+                <LinearLayout
+                    android:id="@+id/headerBatteryContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="20dp">
+                    <ImageView
+                        android:id="@+id/headerBatteryIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_battery" />
+                    <TextView
+                        android:id="@+id/headerBatteryPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="100%"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+
+                <!-- Night Mode / Bedtime Filter Button -->
+                <ImageView
+                    android:id="@+id/btnNightMode"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:padding="8dp"
+                    android:background="@drawable/button_pill_accent"
+                    android:src="@drawable/ic_night"
+                    android:contentDescription="Night Shift Filter"
+                    android:layout_marginEnd="12dp" />
+
+                <!-- Settings Button -->
+                <ImageView
+                    android:id="@+id/btnSettings"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:padding="8dp"
+                    android:background="@drawable/button_pill_accent"
+                    android:src="@drawable/ic_settings"
+                    android:contentDescription="Settings" />
+            </LinearLayout>
+
+            <!-- Dynamic Grid Layout for Widgets (2x2 or 3x3) -->
+            <GridLayout
+                android:id="@+id/widgetGridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="56dp"
+                android:layout_marginBottom="28dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true" />
+
+            <!-- Bottom Swipe / Gesture Hint -->
+            <TextView
+                android:id="@+id/bottomHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="6dp"
+                android:text="Swipe ↕ for StandBy Clocks • Pinch widget to edit"
+                android:textColor="#80FFFFFF"
+                android:textSize="12sp"
+                android:letterSpacing="0.03" />
+        </FrameLayout>
+
+        <!-- Screen 1: StandBy Fullscreen Digital Clock (Apple StandBy Style) -->
+        <FrameLayout
+            android:id="@+id/standbyDigitalScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="32dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Big Numerals Clock Left -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/standbyDigitalTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:42"
+                        android:textColor="@color/white"
+                        android:textSize="120sp"
+                        android:fontFamily="sans-serif-black"
+                        android:includeFontPadding="false" />
+
+                    <TextView
+                        android:id="@+id/standbyDigitalSeconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="45 SEC"
+                        android:textColor="@color/nest_accent_coral"
+                        android:textSize="18sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.1" />
+                </LinearLayout>
+
+                <!-- Complications Right Side (Date, Weather, Next Alarm) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:orientation="vertical"
+                    android:paddingStart="32dp">
+
+                    <TextView
+                        android:id="@+id/standbyDigitalDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FRIDAY, OCTOBER 30"
+                        android:textColor="@color/nest_primary"
+                        android:textSize="20sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:letterSpacing="0.08" />
+
+                    <TextView
+                        android:id="@+id/standbyDigitalWeather"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="72°F  •  Partly Cloudy"
+                        android:textColor="@color/white"
+                        android:textSize="26sp"
+                        android:fontFamily="sans-serif-light" />
+
+                    <!-- Alarm Pill -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/button_pill_accent"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_alarm" />
+
+                        <TextView
+                            android:id="@+id/standbyDigitalAlarm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Alarm 7:00 AM"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text="Swipe ↕ to switch views"
+                android:textColor="#55FFFFFF"
+                android:textSize="12sp" />
+        </FrameLayout>
+
+        <!-- Screen 2: StandBy Fullscreen Analog Clock -->
+        <FrameLayout
+            android:id="@+id/standbyAnalogScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="24dp">
+
+            <com.google.ambient.nesthub.views.AnalogClockView
+                android:id="@+id/standbyAnalogClockView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/standbyAnalogDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:text="FRIDAY, OCT 30"
+                android:textColor="@color/nest_primary"
+                android:textSize="18sp"
+                android:letterSpacing="0.1" />
+        </FrameLayout>
+
+        <!-- Screen 3: StandBy Ambient Minimal / Bedtime -->
+        <FrameLayout
+            android:id="@+id/standbyMinimalScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="32dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/minimalClockTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:42"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="100sp"
+                    android:fontFamily="sans-serif-thin" />
+
+                <TextView
+                    android:id="@+id/minimalClockDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Good night • Rest peacefully"
+                    android:textColor="#88FFFFFF"
+                    android:textSize="20sp"
+                    android:letterSpacing="0.05" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:text="Tap to wake • Swipe ↕ for dashboard"
+                android:textColor="#44FFFFFF"
+                android:textSize="12sp" />
+        </FrameLayout>
+    </ViewFlipper>
+
+    <!-- Bedtime Ultra-Dim & Red Shift Filter Overlay -->
+    <View
+        android:id="@+id/redFilterOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/night_red_filter"
+        android:visibility="gone" />
+
+</FrameLayout>

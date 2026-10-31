@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#191B22"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nest Hub Settings"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Customize your bedside smart display, clocks, widgets &amp; themes"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <!-- Grid Layout Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="WIDGET GRID LAYOUT"
+            android:textColor="@color/nest_primary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-bold"
+            android:letterSpacing="0.08" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioGrid2x2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="2 × 2 Grid (4 Slots)"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radioGrid3x3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="3 × 3 Grid (9 Slots)"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/radioGridCustom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Custom Grid Layout"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+        </RadioGroup>
+
+        <!-- Custom Grid Details (Visible when Custom is selected) -->
+        <LinearLayout
+            android:id="@+id/layoutCustomGridSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#232733"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom Grid Sizing &amp; Dynamic Slots"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCustomColInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Columns: 3"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnDecCols"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:text="−"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnIncCols"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:text="+"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCustomRowInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rows: 2"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <Button
+                    android:id="@+id/btnDecRows"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:text="−"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnIncRows"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="44dp"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:text="+"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCustomSlotsCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Total Slots: 6"
+                    android:textColor="@color/nest_primary"
+                    android:textSize="13sp"
+                    android:fontFamily="sans-serif-bold" />
+
+                <Button
+                    android:id="@+id/btnRemoveSlot"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="− Remove Slot"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnAddSlot"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:text="+ Add Slot"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- StandBy Clock Display Settings -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="STANDBY CLOCK OPTIONS"
+            android:textColor="@color/nest_primary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-bold"
+            android:letterSpacing="0.08" />
+
+        <CheckBox
+            android:id="@+id/checkStandbyPureBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Completely Black Background for Clocks (OLED Pure Black)"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:checked="true" />
+
+        <!-- Background & Themes Section with LIVE PREVIEW -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="BACKGROUND &amp; WALLPAPER (WITH LIVE PREVIEW)"
+            android:textColor="@color/nest_primary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-bold"
+            android:letterSpacing="0.08" />
+
+        <!-- Live Wallpaper Preview Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#202430"
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Miniature Preview Box representing the tablet screen -->
+            <FrameLayout
+                android:id="@+id/wallpaperPreviewFrame"
+                android:layout_width="160dp"
+                android:layout_height="95dp"
+                android:background="#101216"
+                android:padding="6dp">
+
+                <View
+                    android:id="@+id/wallpaperPreviewBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <!-- Mockup mini widgets & header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvPreviewHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sun, Oct 31 • 88%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8sp"
+                        android:fontFamily="sans-serif-bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/previewMiniCard1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="3dp"
+                            android:background="#33FFFFFF" />
+
+                        <View
+                            android:id="@+id/previewMiniCard2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginStart="3dp"
+                            android:background="#33FFFFFF" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvWallpaperPreviewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Current Wallpaper"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-bold" />
+
+                <TextView
+                    android:id="@+id/tvWallpaperStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Tap any preset or option below to preview"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnApplyWallpaper"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="8dp"
+                    android:text="✓ Apply Wallpaper"
+                    android:backgroundTint="@color/nest_primary_container"
+                    android:textColor="@color/nest_on_primary_container"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCopyDeviceWallpaper"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="Copy Device Wallpaper"
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnImportCustomBg"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="Import Photo..."
+                android:textSize="12sp"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnDynamicTheme"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="Dynamic Sky"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 10 Gradients Row -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="10 Gradient Presets"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/gradientButtonsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <!-- 10 Solid Colors Row -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="10 Solid Color Presets (OLED Pure Black &amp; Tones)"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/solidButtonsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <!-- Bedside Display Options -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="BEDSIDE DISPLAY OPTIONS"
+            android:textColor="@color/nest_primary"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-bold"
+            android:letterSpacing="0.08" />
+
+        <CheckBox
+            android:id="@+id/checkKeepScreenOn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Keep Screen On (Bedside Dock Mode)"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:checked="true" />
+
+        <CheckBox
+            android:id="@+id/checkRedFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bedtime Red Shift Filter (Protects Night Vision)"
+            android:textColor="@color/night_red_accent"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/check24Hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Use 24-Hour Time Format"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/checkUseCelsius"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weather Unit: Celsius (°C) instead of Fahrenheit (°F)"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <!-- First-Time Tutorial Button -->
+        <Button
+            android:id="@+id/btnRestartTutorial"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:text="▶ Restart First-Time Tutorial Guide"
+            android:textSize="13sp" />
+
+        <!-- Actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnDoneSettings"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:text="Done"
+                android:backgroundTint="@color/nest_primary_container"
+                android:textColor="@color/nest_on_primary_container"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

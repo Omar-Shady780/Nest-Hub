@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Core UI Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Material You / Nest Palette -->
+    <color name="nest_dark_bg">#111318</color>
+    <color name="nest_surface">#1A1C22</color>
+    <color name="nest_surface_card">#21242C</color>
+    <color name="nest_surface_card_stroke">#333846</color>
+    <color name="nest_surface_hover">#2C303B</color>
+    
+    <color name="nest_primary">#A8C7FA</color>
+    <color name="nest_primary_container">#0842A0</color>
+    <color name="nest_on_primary_container">#D3E3FD</color>
+    
+    <color name="nest_accent_coral">#FF8F75</color>
+    <color name="nest_accent_mint">#7BDCB5</color>
+    <color name="nest_accent_amber">#FFD56B</color>
+    <color name="nest_accent_cyan">#70D6FF</color>
+    <color name="nest_accent_purple">#D0BCFF</color>
+    
+    <color name="text_primary">#E3E2E6</color>
+    <color name="text_secondary">#8E9099</color>
+    <color name="text_tertiary">#5E626E</color>
+    
+    <!-- Night Mode / Bedtime Red Shift -->
+    <color name="night_red_filter">#55FF2200</color>
+    <color name="night_red_accent">#FF5252</color>
+    <color name="night_red_dim">#88330000</color>
+    
+    <!-- Battery Level Indicator Colors -->
+    <color name="battery_green">#4CAF50</color>
+    <color name="battery_yellow">#FFEB3B</color>
+    <color name="battery_red">#F44336</color>
+</resources>
+

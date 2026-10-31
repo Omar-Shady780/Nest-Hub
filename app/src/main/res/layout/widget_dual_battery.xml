@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Section 1: Tablet Battery -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/dualBatteryTabletIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_battery" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Tablet Battery"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:id="@+id/dualBatteryTabletStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100% ⚡ Charging"
+            android:textColor="@color/battery_green"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/dualBatteryTabletProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="100"
+        android:progressTint="@color/battery_green"
+        android:progressBackgroundTint="#33FFFFFF" />
+
+    <!-- Subtle Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="#22FFFFFF" />
+
+    <!-- Section 2: Bluetooth Accessories Battery -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_bluetooth" />
+
+        <TextView
+            android:id="@+id/dualBatteryBtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="Galaxy Buds / Accessories"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/dualBatteryBtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="85% Connected"
+            android:textColor="@color/nest_accent_cyan"
+            android:textSize="13sp"
+            android:fontFamily="sans-serif-bold" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/dualBatteryBtProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="85"
+        android:progressTint="@color/nest_accent_cyan"
+        android:progressBackgroundTint="#33FFFFFF" />
+</LinearLayout>

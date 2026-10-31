@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg"
+    android:backgroundTint="#EE161922"
+    android:padding="28dp">
+
+    <!-- Header badge -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WELCOME GUIDE • FIRST TIME SETUP"
+        android:textColor="@color/nest_primary"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-bold"
+        android:letterSpacing="0.08" />
+
+    <!-- Flipper for Tutorial Steps -->
+    <ViewFlipper
+        android:id="@+id/tutorialFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp">
+
+        <!-- Step 1: Welcome -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌟 Transform Your Tablet"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Nest Bedside Hub turns your Android tablet into an ambient Google Nest and Apple StandBy bedside smart display. Your screen is locked in landscape mode with dedicated zero-sleep bedside dock protection."
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Step 2: Pinch to Customize -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👆 Pinch to Edit Any Widget"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Pinch inward or long-press on any card on your dashboard to customize that widget's options, expand its size (1 or 2 columns/rows), remove it completely, or replace it from over 20+ built-in widgets!"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Step 3: StandBy Clocks -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="↕ Swipe for StandBy Clocks"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Swipe UP anywhere on your screen to transition fluidly into the full-screen Digital StandBy clock or Analog watchface with live Next Alarm and battery status. Swipe DOWN to return to your dashboard."
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Step 4: Smart Volume & Brightness -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="☀️ Volume Buttons Control Brightness"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Press your tablet's physical Volume buttons to dim or brighten your bedside display smoothly with a sun HUD. When music plays (Spotify, YouTube, etc.), the volume buttons automatically control audio for 15 seconds after music stops!"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+
+        <!-- Step 5: Android Home Widgets & Wallpapers -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⊞ Home Widgets &amp; Color Sync"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:fontFamily="sans-serif-bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Add any Android home screen widget to your grid! Choose from 10 gradient presets, 10 OLED solids, or copy your device wallpaper — all clock dates and action buttons automatically match your wallpaper colors!"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:lineSpacingExtra="4dp" />
+        </LinearLayout>
+    </ViewFlipper>
+
+    <!-- Bottom Controls & Step Dots -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btnTutorialSkip"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="Skip"
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/tutorialPageDots"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="●  ○  ○  ○  ○"
+            android:textColor="@color/nest_primary"
+            android:textSize="16sp"
+            android:letterSpacing="0.2" />
+
+        <Button
+            android:id="@+id/btnTutorialNext"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="Next ➔"
+            android:backgroundTint="@color/nest_primary"
+            android:textColor="@color/white"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" />
+    </LinearLayout>
+</LinearLayout>

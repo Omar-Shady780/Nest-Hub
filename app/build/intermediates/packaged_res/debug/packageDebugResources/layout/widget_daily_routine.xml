@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bedtime Routine"
+        android:textColor="@color/nest_accent_mint"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <CheckBox
+        android:id="@+id/checkRoutine1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Lock doors &amp; set alarm"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <CheckBox
+        android:id="@+id/checkRoutine2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Take evening vitamins"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <CheckBox
+        android:id="@+id/checkRoutine3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Charge devices for tomorrow"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+</LinearLayout>

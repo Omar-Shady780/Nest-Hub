@@ -1,0 +1,166 @@
+[
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_alarm.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_alarm.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_button_pill_accent.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/button_pill_accent.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_digital_clock.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_digital_clock.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_quote.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_quote.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_ambient_sounds.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_ambient_sounds.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_battery.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_battery.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_widget_card_bg.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/widget_card_bg.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_media_player.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_media_player.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_analog_clock.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_analog_clock.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_activity_main.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_quick_toggles.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_quick_toggles.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_calculator.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_calculator.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_daily_routine.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_daily_routine.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_calendar.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_calendar.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_system_monitor.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_system_monitor.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_calendar.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_calendar.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_gemini.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_gemini.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_item_widget_option.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/item_widget_option.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_gemini.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_gemini.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_timer.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_timer.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_weather.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_weather.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_sticky_notes.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_sticky_notes.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_launcher_round.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_sun_moon.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_sun_moon.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_settings.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_settings.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_launcher.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_bluetooth_battery.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_bluetooth_battery.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_timer.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_timer.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_photo_frame.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_photo_frame.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_device_battery.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_device_battery.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_dialog_widget_picker.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/dialog_widget_picker.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_bluetooth.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_bluetooth.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_dialog_settings.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/dialog_settings.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_water_tracker.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_water_tracker.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_alarm.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_alarm.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_night.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_night.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_stopwatch.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_stopwatch.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/layout_widget_world_clock.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/layout/widget_world_clock.xml"
+    },
+    {
+        "merged": "com.google.ambient.nesthub.app-debug-4:/drawable_ic_weather.xml.flat",
+        "source": "com.google.ambient.nesthub.app-main-6:/drawable/ic_weather.xml"
+    }
+]

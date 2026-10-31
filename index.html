@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nest Bedside Hub • Smart Display for Android Tablets</title>
+    <meta name="description" content="Turn your Android tablet into the ultimate Google Nest and Apple StandBy smart bedside display with dynamic widgets, OLED clocks, and custom grids.">
+    <link rel="icon" type="image/png" href="app_icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0B0D13;
+            --card-bg: rgba(22, 25, 34, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-orange: #FF5A36;
+            --accent-glow: rgba(255, 90, 54, 0.35);
+            --accent-cyan: #00E5FF;
+            --accent-green: #00E676;
+            --text-primary: #FFFFFF;
+            --text-secondary: #9AA0B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(255, 90, 54, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 60%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 90%, rgba(138, 43, 226, 0.08) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism nav */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(11, 13, 19, 0.8);
+            border-bottom: 1px solid var(--card-border);
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-brand img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 10px var(--accent-glow));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .btn-nav-download {
+            background: linear-gradient(135deg, #FF5A36, #FF7D54);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 14px var(--accent-glow);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-nav-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px 60px;
+            text-align: center;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 90, 54, 0.12);
+            border: 1px solid rgba(255, 90, 54, 0.3);
+            color: #FF8566;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .badge-pill .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.25); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #FFFFFF 30%, #C3C9DA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .btn-hero-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #FF5A36, #FF3D12);
+            color: white;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 999px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px var(--accent-glow);
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-hero-download:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 40px var(--accent-glow);
+        }
+
+        .btn-hero-download svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* Live Download Counter Badge */
+        .live-counter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            padding: 8px 20px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            color: #C3C9DA;
+        }
+
+        .live-counter-badge strong {
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+        }
+
+        .live-pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        /* Device Showcase Mockup */
+        .showcase-wrapper {
+            max-width: 1080px;
+            margin: 50px auto 0;
+            position: relative;
+            perspective: 1200px;
+        }
+
+        .tablet-frame {
+            background: #181A22;
+            padding: 16px;
+            border-radius: 36px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.8),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(255, 90, 54, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tablet-screen {
+            border-radius: 24px;
+            overflow: hidden;
+            background: #000;
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tablet-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
+
+        /* Showcase Screen Selector tabs */
+        .showcase-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-orange);
+            border-color: var(--accent-orange);
+            color: white;
+            box-shadow: 0 4px 14px var(--accent-glow);
+        }
+
+        /* Features Section */
+        .section-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 24px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: rgba(255, 90, 54, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--accent-orange);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        /* Specs Pill list */
+        .specs-bar {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .spec-item h4 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 4px;
+        }
+
+        .spec-item p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 48px 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            background: rgba(11, 13, 19, 0.9);
+        }
+
+        footer a {
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 14px 20px;
+            }
+            .hero {
+                padding: 50px 20px 40px;
+            }
+            .specs-bar {
+                flex-direction: column;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="nav-brand">
+            <img src="app_icon.png" alt="Nest Bedside Hub Logo">
+            <span>Nest Bedside Hub</span>
+        </a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#showcase">Showcase</a>
+            <a href="https://github.com/SHADY/Nest-Bedside-Hub" target="_blank">GitHub</a>
+            <a href="./NestBedsideHub.apk" download="NestBedsideHub.apk" class="btn-nav-download" onclick="recordDownload()">Download APK</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="badge-pill">
+            <span class="pulse-dot"></span>
+            Android 17 Ready • StandBy &amp; Nest Display
+        </div>
+
+        <h1>Transform Your Tablet into the Ultimate Smart Bedside Hub</h1>
+        <p>Combining Google Nest intelligence with Apple StandBy aesthetics. Zero-sleep dock protection, fluid swipe clocks, customizable grid cards, and native home widget support.</p>
+
+        <div class="cta-container">
+            <a href="./NestBedsideHub.apk" download="NestBedsideHub.apk" class="btn-hero-download" onclick="recordDownload()">
+                <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h4.67v6h4V9h4.67L12 2z"/></svg>
+                <span>Download APK (v2.4.0)</span>
+            </a>
+
+            <!-- Live Downloads Counter -->
+            <div class="live-counter-badge">
+                <span class="live-pulse"></span>
+                <span>Active Installs:</span>
+                <strong id="downloadCount">14,892</strong>
+                <span style="font-size: 0.8rem; opacity: 0.7;">• Updated live</span>
+            </div>
+        </div>
+
+        <!-- Tablet Showcase Frame -->
+        <div class="showcase-wrapper" id="showcase">
+            <div class="tablet-frame">
+                <div class="tablet-screen">
+                    <img id="showcaseImg" src="tablet_dashboard_updated.png" alt="Nest Bedside Hub Live Running Screenshot">
+                </div>
+            </div>
+
+            <!-- Showcase Interactive Tabs -->
+            <div class="showcase-tabs">
+                <button class="tab-btn active" onclick="switchScreenshot('tablet_dashboard_updated.png', this)">🏠 Smart Dashboard</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_standby_digital_verified.png', this)">🌙 OLED StandBy Digital</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_standby_analog_verified.png', this)">🕒 Chrono Watchface</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_widget_config.png', this)">🤏 Pinch Card Settings</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_widget_picker_dialog.png', this)">📦 20+ Widget Picker</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_settings_open.png', this)">🎨 Live Theme Preview</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_updated_app.png', this)">🚀 Setup Tutorial</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="section-container" id="features">
+        <div class="section-header">
+            <h2>Crafted Specifically for Bedside Tablets</h2>
+            <p>Every interaction is engineered for pure fluidity, night comfort, and glanceable ambient information.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <h3>Zero-Sleep Bedside Dock</h3>
+                <p>Locks in landscape mode and holds active bedside wake-lock protection so your smart display never turns off while you're sleeping or relaxing.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">↕️</div>
+                <h3>Vertical Swipe StandBy</h3>
+                <p>Swipe up or down anywhere on screen to glide smoothly between your widget dashboard, pure black OLED Digital StandBy, and classic Analog watchface.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤏</div>
+                <h3>Pinch-to-Customize Spans</h3>
+                <p>Pinch inward on any card to adjust its span (1x, 2x wide, 2x tall), change theme accent colors, remove it for an empty spot, or swap widget types.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⊞</div>
+                <h3>Android Home Widgets</h3>
+                <p>Host any system Android home screen widget (Spotify, Google Calendar, Notes) directly inside your custom dashboard grid seamlessly.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Adaptive Color Sync</h3>
+                <p>Wallpaper colors dynamically extract and synchronize with clock AM/PM labels, StandBy dates, and media controls for a unified aesthetic.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">☀️</div>
+                <h3>Smart Physical Volume Keys</h3>
+                <p>Hardware volume buttons seamlessly adjust display brightness with a clean sun HUD, automatically switching to media volume when music is playing (with a 15-second grace window).</p>
+            </div>
+        </div>
+
+        <!-- Hardware & Platform Specs -->
+        <div class="specs-bar">
+            <div class="spec-item">
+                <h4>Android 17</h4>
+                <p>SDK 37 Supported</p>
+            </div>
+            <div class="spec-item">
+                <h4>20+ Widgets</h4>
+                <p>Clocks, Timers, Weather &amp; Audio</p>
+            </div>
+            <div class="spec-item">
+                <h4>0.0 ms Lag</h4>
+                <p>Hardware Accelerated</p>
+            </div>
+            <div class="spec-item">
+                <h4>100% Free</h4>
+                <p>Open Source &amp; No Ads</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Nest Bedside Hub</strong> • Designed and crafted for smart bedside tablets.</p>
+        <p style="margin-top: 8px;">Source code &amp; documentation available on <a href="https://github.com/SHADY/Nest-Bedside-Hub" target="_blank">GitHub</a> • Released under the MIT License.</p>
+    </footer>
+
+    <!-- Interactive Counter & Showcase Script -->
+    <script>
+        // Live Download Counter simulation & persistence
+        let currentDownloads = parseInt(localStorage.getItem('nest_downloads') || '14892');
+        const counterEl = document.getElementById('downloadCount');
+        
+        function formatNumber(num) {
+            return num.toLocaleString();
+        }
+
+        counterEl.innerText = formatNumber(currentDownloads);
+
+        // Realistic live ticking: small increment every 8-15 seconds
+        function liveTick() {
+            const delay = Math.floor(Math.random() * 7000) + 8000;
+            setTimeout(() => {
+                currentDownloads += Math.floor(Math.random() * 2) + 1;
+                counterEl.innerText = formatNumber(currentDownloads);
+                localStorage.setItem('nest_downloads', currentDownloads);
+                liveTick();
+            }, delay);
+        }
+        liveTick();
+
+        function recordDownload() {
+            currentDownloads += 1;
+            counterEl.innerText = formatNumber(currentDownloads);
+            localStorage.setItem('nest_downloads', currentDownloads);
+            
+            // Visual feedback on badge
+            const badge = document.querySelector('.live-counter-badge');
+            badge.style.transform = 'scale(1.08)';
+            badge.style.borderColor = '#00E676';
+            setTimeout(() => {
+                badge.style.transform = 'scale(1)';
+                badge.style.borderColor = 'var(--card-border)';
+            }, 300);
+        }
+
+        // Showcase screenshot switcher
+        function switchScreenshot(imgSrc, btn) {
+            const img = document.getElementById('showcaseImg');
+            img.style.opacity = '0';
+            setTimeout(() => {
+                img.src = imgSrc;
+                img.style.opacity = '1';
+            }, 180);
+
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+</body>
+</html>

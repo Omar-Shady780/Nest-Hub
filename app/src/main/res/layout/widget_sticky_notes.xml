@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bedside Scratchpad"
+        android:textColor="@color/nest_accent_amber"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <EditText
+        android:id="@+id/editStickyNote"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="6dp"
+        android:background="@null"
+        android:gravity="top"
+        android:hint="Jot down a thought or morning reminder..."
+        android:textColor="@color/white"
+        android:textColorHint="@color/text_tertiary"
+        android:textSize="14sp"
+        android:inputType="textMultiLine" />
+</LinearLayout>
+
