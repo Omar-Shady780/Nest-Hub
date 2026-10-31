@@ -4,7 +4,7 @@
 [![Android 17 Ready](https://img.shields.io/badge/Android-17%20Ready%20(SDK%2037)-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
 [![Version](https://img.shields.io/badge/Release-v2.4.0-FF5A36)](./NestBedsideHub.apk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red)](https://github.com/SHADY/Nest-Bedside-Hub)
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red)](https://github.com/Omar-Shady780/Nest-Hub)
 
 **Nest Bedside Hub** turns any Android tablet into an ambient Google Nest and Apple StandBy smart display designed for bedside nightstands and desk docks. It features zero-sleep bedside lock protection, vertical swipe StandBy clocks, customizable grid cards with span resizing, 20+ smart widgets, and native Android home screen widget embedding.
 
@@ -14,7 +14,7 @@
 
 - **Live GitHub Pages Website**: [`index.html`](./index.html)
 - **Direct APK Download**: [`NestBedsideHub.apk`](./NestBedsideHub.apk)
-- **GitHub Repository**: [https://github.com/SHADY/Nest-Bedside-Hub](https://github.com/SHADY/Nest-Bedside-Hub)
+- **GitHub Repository**: [https://github.com/Omar-Shady780/Nest-Hub](https://github.com/Omar-Shady780/Nest-Hub)
 
 ---
 
