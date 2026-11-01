@@ -248,7 +248,7 @@
             border-radius: 24px;
             overflow: hidden;
             background: #000;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 5 / 3;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -257,7 +257,7 @@
         .tablet-screen img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: opacity 0.35s ease;
         }
@@ -516,28 +516,27 @@
             letter-spacing: 0.06em;
         }
 
-        /* How to Host on GitHub Pages Box */
-        .pages-guide-box {
-            background: rgba(255, 90, 54, 0.05);
-            border: 1px dashed rgba(255, 90, 54, 0.35);
-            border-radius: 20px;
-            padding: 32px;
-            margin-top: 60px;
+        /* More Features Discovery Hint */
+        .more-features-hint {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--card-border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 10px;
         }
 
-        .pages-guide-box h3 {
-            font-size: 1.35rem;
-            color: #FF8566;
-            margin-bottom: 12px;
+        .more-features-hint .hint-icon {
+            font-size: 1.5rem;
         }
 
-        .pages-guide-box code {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 3px 8px;
-            border-radius: 6px;
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
+        .more-features-hint strong {
+            color: #fff;
         }
 
         /* Footer */
@@ -624,11 +623,7 @@
             <div class="showcase-tabs">
                 <button class="tab-btn active" onclick="switchScreenshot('tablet_dashboard_updated.png', this)">🏠 Smart Dashboard</button>
                 <button class="tab-btn" onclick="switchScreenshot('tablet_standby_digital_verified.png', this)">🌙 OLED StandBy Digital</button>
-                <button class="tab-btn" onclick="switchScreenshot('tablet_standby_analog_verified.png', this)">🕒 Chronograph Watchface</button>
-                <button class="tab-btn" onclick="switchScreenshot('tablet_widget_config.png', this)">🤏 Pinch Card Settings</button>
-                <button class="tab-btn" onclick="switchScreenshot('tablet_widget_picker_dialog.png', this)">📦 20+ Widget Picker</button>
-                <button class="tab-btn" onclick="switchScreenshot('tablet_settings_open.png', this)">🎨 Live Theme Preview</button>
-                <button class="tab-btn" onclick="switchScreenshot('tablet_updated_app.png', this)">🚀 Welcome Tutorial</button>
+                <button class="tab-btn" onclick="switchScreenshot('tablet_standby_analog_verified.png', this)">⏱️ Chronograph Watchface</button>
             </div>
         </div>
     </section>
@@ -637,7 +632,7 @@
     <section class="section-container" id="features">
         <div class="section-header">
             <div class="section-tag">Engineered for Bedside Nightstands</div>
-            <h2>Every Feature You Need at Night &amp; Morning</h2>
+            <h2>Core Essential Features</h2>
             <p>Designed from the ground up for tablets on bedside docks, stands, and charging tables with zero compromises.</p>
         </div>
 
@@ -649,7 +644,7 @@
                 <p>Fullscreen ambient nightstand clocks designed for deep sleep. Clocks smoothly fade into pure zero-backlight OLED black without lighting up your room.</p>
                 <ul>
                     <li>Digital Clock with live seconds right beside hours and minutes</li>
-                    <li>Minimal Analog Chrono watchface with smooth sweeping hands</li>
+                    <li>Minimal Analog Chronograph watchface with smooth sweeping hands</li>
                     <li>Live Next Scheduled Alarm &amp; USB / Battery status pills</li>
                     <li>Weather forecast with Celsius (°C) and Fahrenheit (°F) support</li>
                 </ul>
@@ -664,24 +659,11 @@
                     <li>Choose between <strong>2×2 Grid</strong> (4 large focus widgets) or <strong>3×3 Grid</strong> (9 widgets)</li>
                     <li><strong>Custom Grid Layout</strong>: Configurable rows (2-4), columns (2-4), and dynamic add/remove slot buttons</li>
                     <li>Per-widget card spans: <strong>Normal Width (1x)</strong>, <strong>Wide Width (2x)</strong>, or <strong>Tall Height (2x)</strong></li>
-                    <li><strong>Empty Slot Option</strong>: Remove any widget to leave a clean blank spot with a subtle <code>+</code> button</li>
+                    <li>Pinch or long-press on any card for instant zoom customization dialogs</li>
                 </ul>
             </div>
 
-            <!-- Feature 3: Pinch-to-Customize -->
-            <div class="feature-card">
-                <div class="feature-icon">🤏</div>
-                <h3>Fluid Pinch-to-Customize Gestures</h3>
-                <p>Interact with your bedside display effortlessly without searching through complicated menus.</p>
-                <ul>
-                    <li>Pinch inward or long-press on any card for instant zoom dialog animations</li>
-                    <li>Configure specific options for that exact widget first</li>
-                    <li>Bottom button: <strong>🔄 Change Widget Type...</strong> opens the visual picker</li>
-                    <li>Select from per-card tint accents (Blue, Coral, Mint, Amber, Cyan)</li>
-                </ul>
-            </div>
-
-            <!-- Feature 4: Android Home Screen Widgets -->
+            <!-- Feature 3: Android Home Screen Widgets -->
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
                 <h3>Android Home Screen Widget Host</h3>
@@ -690,23 +672,11 @@
                     <li>Native <code>AppWidgetHost</code> embeds Spotify, Google Calendar, Google Keep, Notes, or WhatsApp</li>
                     <li>Blends seamlessly with the card background colors and rounded corners</li>
                     <li>Full interactive touch support for system widget controls</li>
+                    <li>Adapts dynamically to wallpaper colors and themes</li>
                 </ul>
             </div>
 
-            <!-- Feature 5: Adaptive Color Sync -->
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Adaptive Wallpaper Color Sync</h3>
-                <p>Intelligent palette extraction ensures every text element and button matches your theme.</p>
-                <ul>
-                    <li>Digital Clock AM/PM label automatically adopts the wallpaper accent</li>
-                    <li>StandBy Digital and Analog date headers dynamically match wallpaper colors</li>
-                    <li>Media player action buttons inherit dynamic theme highlights</li>
-                    <li>Copy device wallpaper with automatic system color extraction</li>
-                </ul>
-            </div>
-
-            <!-- Feature 6: Smart Volume & Brightness HUD -->
+            <!-- Feature 4: Smart Volume & Brightness HUD -->
             <div class="feature-card">
                 <div class="feature-icon">☀️</div>
                 <h3>Smart Physical Volume Key Controls</h3>
@@ -715,46 +685,15 @@
                     <li>Press physical volume keys to smoothly dim or brighten screen brightness</li>
                     <li>Sleek Sun percentage HUD popup appears without covering your view</li>
                     <li>Automatically routes to media volume whenever music or audio plays</li>
-                    <li><strong>15-Second Grace Window</strong>: Keeps volume on media for 15s after music stops</li>
+                    <li>Zero-sleep wake lock keeps the screen alive docked without turning off</li>
                 </ul>
             </div>
 
-            <!-- Feature 7: Zero Sleep & Night Filter -->
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Zero-Sleep Protection &amp; Red Shift</h3>
-                <p>Always ready when you glance over in the middle of the night.</p>
-                <ul>
-                    <li>Orientation permanently locked to landscape mode</li>
-                    <li>Dedicated <code>SCREEN_BRIGHT_WAKE_LOCK</code> ensures screen never sleeps while docked</li>
-                    <li>Bedtime Red Shift Filter: Calming red spectrum overlay protecting night vision and melatonin</li>
-                </ul>
-            </div>
-
-            <!-- Feature 8: Wallpaper Live Preview -->
-            <div class="feature-card">
-                <div class="feature-icon">🖼️</div>
-                <h3>Live Wallpaper Preview in Settings</h3>
-                <p>Never guess what a wallpaper looks like before applying it.</p>
-                <ul>
-                    <li>Interactive live miniature preview box right inside the Settings dialog</li>
-                    <li>10 curated Gradient presets (Sunset Horizon, Cosmic Nebula, Deep Ocean, etc.)</li>
-                    <li>10 curated Solid color presets (OLED Pure Black, Material Dark, Slate Navy, etc.)</li>
-                    <li>Import any custom photo from gallery or choose Dynamic Sky time gradient</li>
-                </ul>
-            </div>
-
-            <!-- Feature 9: Onboarding Tutorial -->
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>First-Time Welcome Tutorial Guide</h3>
-                <p>Welcomes you on fresh installation with a friendly step-by-step walkthrough.</p>
-                <ul>
-                    <li>5-step guided tour explaining gestures, widgets, clocks, and volume controls</li>
-                    <li>Paging dots indicator (<code>● ○ ○ ○ ○</code>) with Skip and Next buttons</li>
-                    <li>Never interrupts normal launches once completed</li>
-                    <li>Restart anytime from Settings via "Restart First-Time Tutorial Guide"</li>
-                </ul>
+            <div class="more-features-hint">
+                <div class="hint-icon">✨</div>
+                <div>
+                    <strong>Explore more inside the app:</strong> Adaptive Wallpaper Color Sync, Pinch-to-Customize dialogs, Bedtime Red Shift melatonin filter, Ambient Sleep Sound machines, Quick Scratchpad, and First-Time Interactive Tutorial.
+                </div>
             </div>
         </div>
     </section>
@@ -927,14 +866,6 @@
                     <p>Host any home screen widget from Spotify, Google, or any installed app on your tablet.</p>
                 </div>
             </div>
-
-            <div class="widget-catalog-card">
-                <div class="widget-badge">➕</div>
-                <div class="widget-info">
-                    <h4>Empty Slot</h4>
-                    <p>Clean blank placeholder with subtle plus button to leave aesthetic breathing space on your grid.</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -992,18 +923,6 @@
                 <h4>100% Free</h4>
                 <p>Open Source &amp; No Ads</p>
             </div>
-        </div>
-
-        <!-- GitHub Pages Hosting Info -->
-        <div class="pages-guide-box">
-            <h3>🌐 Hosting on GitHub Pages</h3>
-            <p>This website is built with vanilla HTML5, CSS3, and JavaScript with zero build steps or external dependencies. To host it on GitHub Pages:</p>
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                1. Go to your repository on GitHub &gt; <strong>Settings</strong> &gt; <strong>Pages</strong>.<br>
-                2. Under <em>Build and deployment</em>, set Source to <strong>Deploy from a branch</strong>.<br>
-                3. Choose <strong>main</strong> branch and <strong>/ (root)</strong> folder, then click <strong>Save</strong>.<br>
-                Your website will be live globally at <code>https://omar-shady780.github.io/Nest-Hub/</code>!
-            </p>
         </div>
     </section>
 
