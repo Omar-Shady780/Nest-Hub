@@ -1,7 +1,7 @@
 # Nest Bedside Hub 🌟
 ### The Ambient Smart Display for Android Tablets (Google Nest Meets Apple StandBy)
 
-[![Android 17 Ready](https://img.shields.io/badge/Android-17%20Ready%20(SDK%2037)-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
+[![Android 8-17 Supported](https://img.shields.io/badge/Android-8.0%20%E2%80%93%2017%20Supported%20(API%2026--37)-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
 [![Version](https://img.shields.io/badge/Release-v2.4.0-FF5A36)](./NestBedsideHub.apk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red)](https://github.com/Omar-Shady780/Nest-Hub)
