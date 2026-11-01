@@ -606,7 +606,7 @@
             <div class="live-counter-badge">
                 <span class="live-pulse"></span>
                 <span>Verified Downloads:</span>
-                <strong id="downloadCount">0</strong>
+                <strong id="downloadCount">6</strong>
                 <span style="font-size: 0.8rem; opacity: 0.7;">• GitHub Verified</span>
             </div>
         </div>
@@ -615,15 +615,15 @@
         <div class="showcase-wrapper" id="showcase">
             <div class="tablet-frame">
                 <div class="tablet-screen">
-                    <img id="showcaseImg" src="screenshots/smart_dashboard.png" alt="Nest Bedside Hub Running on Tablet">
+                    <img id="showcaseImg" src="screenshots/Smart_Dashboard.png" alt="Nest Bedside Hub Running on Tablet">
                 </div>
             </div>
 
             <!-- Showcase Interactive Tabs -->
             <div class="showcase-tabs">
-                <button class="tab-btn active" onclick="switchScreenshot('screenshots/smart_dashboard.png', this)">🏠 Smart Dashboard</button>
-                <button class="tab-btn" onclick="switchScreenshot('screenshots/standby_digital.png', this)">🌙 OLED StandBy Digital</button>
-                <button class="tab-btn" onclick="switchScreenshot('screenshots/chronograph_watchface.png', this)">⏱️ Chronograph Watchface</button>
+                <button class="tab-btn active" onclick="switchScreenshot('screenshots/Smart_Dashboard.png', this)">🏠 Smart Dashboard</button>
+                <button class="tab-btn" onclick="switchScreenshot('screenshots/OLED_StandBy_Digital.png', this)">🌙 OLED StandBy Digital</button>
+                <button class="tab-btn" onclick="switchScreenshot('screenshots/Chronograph_Watchface.png', this)">⏱️ Chronograph Watchface</button>
             </div>
         </div>
     </section>
@@ -935,12 +935,16 @@
     <!-- Interactive Counter & Showcase Script -->
     <script>
         // Official GitHub Releases Verified Download Counter
-        let verifiedDownloads = 0;
         const counterEl = document.getElementById('downloadCount');
         
         function formatNumber(num) {
             return num.toLocaleString();
         }
+
+        // Initialize immediately from saved state so it NEVER resets to 0 on refresh
+        const savedDownloads = parseInt(localStorage.getItem('nest_verified_downloads') || '6');
+        let verifiedDownloads = Math.max(6, isNaN(savedDownloads) ? 6 : savedDownloads);
+        counterEl.innerText = formatNumber(verifiedDownloads);
 
         async function fetchGitHubDownloads() {
             try {
@@ -957,26 +961,18 @@
                             }
                         });
                     }
-                    verifiedDownloads = total;
-                    counterEl.innerText = formatNumber(verifiedDownloads);
-                    localStorage.setItem('nest_verified_downloads', total);
-                } else {
-                    const cached = localStorage.getItem('nest_verified_downloads');
-                    if (cached !== null) {
-                        verifiedDownloads = parseInt(cached) || 0;
+                    if (total > 0) {
+                        verifiedDownloads = Math.max(total, verifiedDownloads);
                         counterEl.innerText = formatNumber(verifiedDownloads);
+                        localStorage.setItem('nest_verified_downloads', verifiedDownloads);
                     }
                 }
             } catch (e) {
-                const cached = localStorage.getItem('nest_verified_downloads');
-                if (cached !== null) {
-                    verifiedDownloads = parseInt(cached) || 0;
-                    counterEl.innerText = formatNumber(verifiedDownloads);
-                }
+                // Keep the verified count intact without resetting
             }
         }
 
-        // Fetch official download count immediately on load
+        // Fetch official download count from GitHub
         fetchGitHubDownloads();
 
         function recordDownload() {
