@@ -934,21 +934,20 @@
 
     <!-- Interactive Counter & Showcase Script -->
     <script>
-        // Official GitHub Releases Verified Download Counter
+        // Synchronized Official GitHub Releases Download Counter
         const counterEl = document.getElementById('downloadCount');
         
         function formatNumber(num) {
             return num.toLocaleString();
         }
 
-        // Initialize immediately from saved state so it NEVER resets to 0 on refresh
-        const savedDownloads = parseInt(localStorage.getItem('nest_verified_downloads') || '6');
-        let verifiedDownloads = Math.max(6, isNaN(savedDownloads) ? 6 : savedDownloads);
-        counterEl.innerText = formatNumber(verifiedDownloads);
+        // Clean any desynced local storage to guarantee 100% sync with GitHub
+        localStorage.removeItem('nest_verified_downloads');
+        localStorage.removeItem('nest_downloads');
 
         async function fetchGitHubDownloads() {
             try {
-                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases');
+                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases?t=' + Date.now());
                 if (res.ok) {
                     const releases = await res.json();
                     let total = 0;
@@ -961,25 +960,19 @@
                             }
                         });
                     }
-                    if (total > 0) {
-                        verifiedDownloads = Math.max(total, verifiedDownloads);
-                        counterEl.innerText = formatNumber(verifiedDownloads);
-                        localStorage.setItem('nest_verified_downloads', verifiedDownloads);
+                    if (total >= 0) {
+                        counterEl.innerText = formatNumber(total);
                     }
                 }
             } catch (e) {
-                // Keep the verified count intact without resetting
+                // If offline, keep the default verified number
             }
         }
 
-        // Fetch official download count from GitHub
+        // Fetch official download count from GitHub immediately
         fetchGitHubDownloads();
 
         function recordDownload() {
-            verifiedDownloads += 1;
-            counterEl.innerText = formatNumber(verifiedDownloads);
-            localStorage.setItem('nest_verified_downloads', verifiedDownloads);
-            
             // Visual feedback on badge
             const badge = document.querySelector('.live-counter-badge');
             if (badge) {
@@ -988,8 +981,11 @@
                 setTimeout(() => {
                     badge.style.transform = 'scale(1)';
                     badge.style.borderColor = 'var(--card-border)';
-                }, 300);
+                }, 400);
             }
+
+            // Re-check GitHub after a brief moment to sync newly processed counts
+            setTimeout(fetchGitHubDownloads, 3000);
         }
 
         // Showcase screenshot switcher
