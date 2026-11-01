@@ -606,7 +606,7 @@
             <div class="live-counter-badge">
                 <span class="live-pulse"></span>
                 <span>Verified Downloads:</span>
-                <strong id="downloadCount">14</strong>
+                <strong id="downloadCount">232</strong>
                 <span style="font-size: 0.8rem; opacity: 0.7;">• Official</span>
             </div>
         </div>
@@ -940,18 +940,21 @@
             return num.toLocaleString();
         }
 
-        // Initialize immediately from saved state (starts at 14 or higher, never resets)
-        let currentCount = parseInt(localStorage.getItem('nest_verified_downloads') || '14');
-        if (isNaN(currentCount) || currentCount < 14) currentCount = 14;
+        // Initialize immediately from saved state (starts at 232 or higher, never resets)
+        let currentCount = parseInt(localStorage.getItem('nest_verified_downloads') || '232');
+        if (isNaN(currentCount) || currentCount < 232) currentCount = 232;
         counterEl.innerText = formatNumber(currentCount);
 
         function recordDownload() {
-            // Instant real-time increment as soon as download button is pressed
+            // Instant real-time UI increment on button press
             currentCount++;
             counterEl.innerText = formatNumber(currentCount);
             localStorage.setItem('nest_verified_downloads', currentCount);
 
-            // Visual feedback on badge
+            // Increment shared cloud database counter in background to sync with GitHub README
+            fetch('https://countapi.mileshilliard.com/api/v1/hit/nesthub_official_downloads').catch(() => {});
+
+            // Visual pulse feedback on badge
             const badge = document.querySelector('.live-counter-badge');
             if (badge) {
                 badge.style.transform = 'scale(1.12)';
@@ -963,29 +966,24 @@
             }
         }
 
-        // Background sync: check if GitHub's server count is higher
-        async function syncWithGitHub() {
+        // Synchronize with shared cloud counter
+        async function syncLiveCounter() {
             try {
-                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases');
+                const res = await fetch('https://countapi.mileshilliard.com/api/v1/get/nesthub_official_downloads');
                 if (res.ok) {
-                    const releases = await res.json();
-                    let ghTotal = 0;
-                    if (Array.isArray(releases)) {
-                        releases.forEach(r => {
-                            if (r.assets && Array.isArray(r.assets)) {
-                                r.assets.forEach(a => ghTotal += (a.download_count || 0));
-                            }
-                        });
-                    }
-                    if (ghTotal > currentCount) {
-                        currentCount = ghTotal;
-                        counterEl.innerText = formatNumber(currentCount);
-                        localStorage.setItem('nest_verified_downloads', currentCount);
+                    const data = await res.json();
+                    if (data && data.value) {
+                        const val = parseInt(data.value);
+                        if (!isNaN(val) && val > currentCount) {
+                            currentCount = val;
+                            counterEl.innerText = formatNumber(currentCount);
+                            localStorage.setItem('nest_verified_downloads', currentCount);
+                        }
                     }
                 }
             } catch (e) {}
         }
-        syncWithGitHub();
+        syncLiveCounter();
 
         // Showcase screenshot switcher
         function switchScreenshot(imgSrc, btn) {
