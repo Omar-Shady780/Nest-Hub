@@ -20,17 +20,9 @@
 
 ## 📸 Screenshots Showcase
 
-| Smart Dashboard (Clean Header & Seconds Beside Time) | Fullscreen OLED Digital StandBy Clock |
-| :---: | :---: |
-| ![Smart Dashboard](./tablet_dashboard_updated.png) | ![OLED Digital StandBy](./tablet_standby_digital_verified.png) |
-
-| Minimal Chronograph Watchface | Pinch Card Configuration & Spans |
-| :---: | :---: |
-| ![Analog Watchface](./tablet_standby_analog_verified.png) | ![Pinch Card Settings](./tablet_widget_config.png) |
-
-| 20+ Smart Widgets Picker with Live Previews | Live Wallpaper Preview & Settings |
-| :---: | :---: |
-| ![Widget Picker](./tablet_widget_picker_dialog.png) | ![Settings & Wallpaper Preview](./tablet_settings_open.png) |
+| 🏠 Smart Bedside Dashboard | 🌙 OLED StandBy Digital | ⏱️ Chronograph Watchface |
+| :---: | :---: | :---: |
+| ![Smart Dashboard](./screenshots/smart_dashboard.png) | ![OLED StandBy Digital](./screenshots/standby_digital.png) | ![Chronograph Watchface](./screenshots/chronograph_watchface.png) |
 
 ---
 
