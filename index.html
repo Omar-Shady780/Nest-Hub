@@ -582,7 +582,7 @@
             <a href="#gestures">Gestures</a>
             <a href="#showcase">Screenshots</a>
             <a href="https://github.com/Omar-Shady780/Nest-Hub" target="_blank">GitHub</a>
-            <a href="./NestBedsideHub.apk" download="NestBedsideHub.apk" class="btn-nav-download" onclick="recordDownload()">Download APK</a>
+            <a href="https://github.com/Omar-Shady780/Nest-Hub/releases/latest/download/NestBedsideHub.apk" class="btn-nav-download" onclick="recordDownload()">Download APK</a>
         </div>
     </header>
 
@@ -597,7 +597,7 @@
         <p>Google Nest Hub intelligence meets Apple StandBy aesthetics. Zero-sleep dock protection, fluid vertical swipe clocks, custom resizable grids, 20+ smart widgets, and native Android home screen widgets.</p>
 
         <div class="cta-container">
-            <a href="./NestBedsideHub.apk" download="NestBedsideHub.apk" class="btn-hero-download" onclick="recordDownload()">
+            <a href="https://github.com/Omar-Shady780/Nest-Hub/releases/latest/download/NestBedsideHub.apk" class="btn-hero-download" onclick="recordDownload()">
                 <svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zm7-18L5.33 9h4.67v6h4V9h4.67L12 2z"/></svg>
                 <span>Download APK (v2.4.0 • 7.0 MB)</span>
             </a>
@@ -605,9 +605,9 @@
             <!-- Live Downloads Counter -->
             <div class="live-counter-badge">
                 <span class="live-pulse"></span>
-                <span>Active Downloads:</span>
-                <strong id="downloadCount">14,892</strong>
-                <span style="font-size: 0.8rem; opacity: 0.7;">• Updated live</span>
+                <span>Verified Downloads:</span>
+                <strong id="downloadCount">0</strong>
+                <span style="font-size: 0.8rem; opacity: 0.7;">• GitHub Verified</span>
             </div>
         </div>
 
@@ -934,41 +934,66 @@
 
     <!-- Interactive Counter & Showcase Script -->
     <script>
-        // Live Download Counter simulation & persistence
-        let currentDownloads = parseInt(localStorage.getItem('nest_downloads') || '14892');
+        // Official GitHub Releases Verified Download Counter
+        let verifiedDownloads = 0;
         const counterEl = document.getElementById('downloadCount');
         
         function formatNumber(num) {
             return num.toLocaleString();
         }
 
-        counterEl.innerText = formatNumber(currentDownloads);
-
-        // Realistic live ticking: small increment every 8-15 seconds
-        function liveTick() {
-            const delay = Math.floor(Math.random() * 7000) + 8000;
-            setTimeout(() => {
-                currentDownloads += Math.floor(Math.random() * 2) + 1;
-                counterEl.innerText = formatNumber(currentDownloads);
-                localStorage.setItem('nest_downloads', currentDownloads);
-                liveTick();
-            }, delay);
+        async function fetchGitHubDownloads() {
+            try {
+                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases');
+                if (res.ok) {
+                    const releases = await res.json();
+                    let total = 0;
+                    if (Array.isArray(releases)) {
+                        releases.forEach(rel => {
+                            if (rel.assets && Array.isArray(rel.assets)) {
+                                rel.assets.forEach(asset => {
+                                    total += (asset.download_count || 0);
+                                });
+                            }
+                        });
+                    }
+                    verifiedDownloads = total;
+                    counterEl.innerText = formatNumber(verifiedDownloads);
+                    localStorage.setItem('nest_verified_downloads', total);
+                } else {
+                    const cached = localStorage.getItem('nest_verified_downloads');
+                    if (cached !== null) {
+                        verifiedDownloads = parseInt(cached) || 0;
+                        counterEl.innerText = formatNumber(verifiedDownloads);
+                    }
+                }
+            } catch (e) {
+                const cached = localStorage.getItem('nest_verified_downloads');
+                if (cached !== null) {
+                    verifiedDownloads = parseInt(cached) || 0;
+                    counterEl.innerText = formatNumber(verifiedDownloads);
+                }
+            }
         }
-        liveTick();
+
+        // Fetch official download count immediately on load
+        fetchGitHubDownloads();
 
         function recordDownload() {
-            currentDownloads += 1;
-            counterEl.innerText = formatNumber(currentDownloads);
-            localStorage.setItem('nest_downloads', currentDownloads);
+            verifiedDownloads += 1;
+            counterEl.innerText = formatNumber(verifiedDownloads);
+            localStorage.setItem('nest_verified_downloads', verifiedDownloads);
             
             // Visual feedback on badge
             const badge = document.querySelector('.live-counter-badge');
-            badge.style.transform = 'scale(1.08)';
-            badge.style.borderColor = '#00E676';
-            setTimeout(() => {
-                badge.style.transform = 'scale(1)';
-                badge.style.borderColor = 'var(--card-border)';
-            }, 300);
+            if (badge) {
+                badge.style.transform = 'scale(1.08)';
+                badge.style.borderColor = '#00E676';
+                setTimeout(() => {
+                    badge.style.transform = 'scale(1)';
+                    badge.style.borderColor = 'var(--card-border)';
+                }, 300);
+            }
         }
 
         // Showcase screenshot switcher
