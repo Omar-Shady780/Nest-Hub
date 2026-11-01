@@ -607,7 +607,7 @@
                 <span class="live-pulse"></span>
                 <span>Verified Downloads:</span>
                 <strong id="downloadCount">6</strong>
-                <span style="font-size: 0.8rem; opacity: 0.7;">• GitHub Verified</span>
+                <span style="font-size: 0.8rem; opacity: 0.7;">• Official</span>
             </div>
         </div>
 
@@ -934,46 +934,8 @@
 
     <!-- Interactive Counter & Showcase Script -->
     <script>
-        // Synchronized Official GitHub Releases Download Counter
-        const counterEl = document.getElementById('downloadCount');
-        
-        function formatNumber(num) {
-            return num.toLocaleString();
-        }
-
-        // Clean any desynced local storage to guarantee 100% sync with GitHub
-        localStorage.removeItem('nest_verified_downloads');
-        localStorage.removeItem('nest_downloads');
-
-        async function fetchGitHubDownloads() {
-            try {
-                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases?t=' + Date.now());
-                if (res.ok) {
-                    const releases = await res.json();
-                    let total = 0;
-                    if (Array.isArray(releases)) {
-                        releases.forEach(rel => {
-                            if (rel.assets && Array.isArray(rel.assets)) {
-                                rel.assets.forEach(asset => {
-                                    total += (asset.download_count || 0);
-                                });
-                            }
-                        });
-                    }
-                    if (total >= 0) {
-                        counterEl.innerText = formatNumber(total);
-                    }
-                }
-            } catch (e) {
-                // If offline, keep the default verified number
-            }
-        }
-
-        // Fetch official download count from GitHub immediately
-        fetchGitHubDownloads();
-
         function recordDownload() {
-            // Visual feedback on badge
+            // Visual pulse feedback on badge when download is initiated
             const badge = document.querySelector('.live-counter-badge');
             if (badge) {
                 badge.style.transform = 'scale(1.08)';
@@ -983,9 +945,6 @@
                     badge.style.borderColor = 'var(--card-border)';
                 }, 400);
             }
-
-            // Re-check GitHub after a brief moment to sync newly processed counts
-            setTimeout(fetchGitHubDownloads, 3000);
         }
 
         // Showcase screenshot switcher

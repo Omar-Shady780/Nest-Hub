@@ -3,7 +3,7 @@
 
 [![Android 8-17 Supported](https://img.shields.io/badge/Android-8.0%20%E2%80%93%2017%20Supported%20(API%2026--37)-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
 [![Version](https://img.shields.io/badge/Release-v2.4.0-FF5A36)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest)
-[![Official Downloads](https://img.shields.io/github/downloads/Omar-Shady780/Nest-Hub/total?color=00E676&logo=github&label=Downloads&cacheSeconds=60)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest)
+[![Official Downloads](https://img.shields.io/badge/Downloads-6-00E676?logo=github)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red)](https://github.com/Omar-Shady780/Nest-Hub)
 
@@ -16,7 +16,7 @@
 - **Live GitHub Pages Website**: [https://omar-shady780.github.io/Nest-Hub/](https://omar-shady780.github.io/Nest-Hub/)
 - **Direct APK Download**: [Download NestBedsideHub.apk (v2.4.0)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest/download/NestBedsideHub.apk)
 - **GitHub Repository**: [https://github.com/Omar-Shady780/Nest-Hub](https://github.com/Omar-Shady780/Nest-Hub)
-- **Live Downloads**: [![Official Downloads](https://img.shields.io/github/downloads/Omar-Shady780/Nest-Hub/total?color=00E676&label=Total%20Downloads&cacheSeconds=60)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest)
+- **Downloads**: [![Official Downloads](https://img.shields.io/badge/Official%20Downloads-6-00E676)](https://github.com/Omar-Shady780/Nest-Hub/releases/latest)
 
 ---
 
