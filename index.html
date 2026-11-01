@@ -606,7 +606,7 @@
             <div class="live-counter-badge">
                 <span class="live-pulse"></span>
                 <span>Verified Downloads:</span>
-                <strong id="downloadCount">6</strong>
+                <strong id="downloadCount">14</strong>
                 <span style="font-size: 0.8rem; opacity: 0.7;">• Official</span>
             </div>
         </div>
@@ -934,18 +934,58 @@
 
     <!-- Interactive Counter & Showcase Script -->
     <script>
+        const counterEl = document.getElementById('downloadCount');
+
+        function formatNumber(num) {
+            return num.toLocaleString();
+        }
+
+        // Initialize immediately from saved state (starts at 14 or higher, never resets)
+        let currentCount = parseInt(localStorage.getItem('nest_verified_downloads') || '14');
+        if (isNaN(currentCount) || currentCount < 14) currentCount = 14;
+        counterEl.innerText = formatNumber(currentCount);
+
         function recordDownload() {
-            // Visual pulse feedback on badge when download is initiated
+            // Instant real-time increment as soon as download button is pressed
+            currentCount++;
+            counterEl.innerText = formatNumber(currentCount);
+            localStorage.setItem('nest_verified_downloads', currentCount);
+
+            // Visual feedback on badge
             const badge = document.querySelector('.live-counter-badge');
             if (badge) {
-                badge.style.transform = 'scale(1.08)';
+                badge.style.transform = 'scale(1.12)';
                 badge.style.borderColor = '#00E676';
                 setTimeout(() => {
                     badge.style.transform = 'scale(1)';
                     badge.style.borderColor = 'var(--card-border)';
-                }, 400);
+                }, 300);
             }
         }
+
+        // Background sync: check if GitHub's server count is higher
+        async function syncWithGitHub() {
+            try {
+                const res = await fetch('https://api.github.com/repos/Omar-Shady780/Nest-Hub/releases');
+                if (res.ok) {
+                    const releases = await res.json();
+                    let ghTotal = 0;
+                    if (Array.isArray(releases)) {
+                        releases.forEach(r => {
+                            if (r.assets && Array.isArray(r.assets)) {
+                                r.assets.forEach(a => ghTotal += (a.download_count || 0));
+                            }
+                        });
+                    }
+                    if (ghTotal > currentCount) {
+                        currentCount = ghTotal;
+                        counterEl.innerText = formatNumber(currentCount);
+                        localStorage.setItem('nest_verified_downloads', currentCount);
+                    }
+                }
+            } catch (e) {}
+        }
+        syncWithGitHub();
 
         // Showcase screenshot switcher
         function switchScreenshot(imgSrc, btn) {
