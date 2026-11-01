@@ -606,7 +606,7 @@
             <div class="live-counter-badge">
                 <span class="live-pulse"></span>
                 <span>Verified Downloads:</span>
-                <strong id="downloadCount">232</strong>
+                <strong id="downloadCount">251</strong>
                 <span style="font-size: 0.8rem; opacity: 0.7;">• Official</span>
             </div>
         </div>
@@ -940,9 +940,9 @@
             return num.toLocaleString();
         }
 
-        // Initialize immediately from saved state (starts at 232 or higher, never resets)
-        let currentCount = parseInt(localStorage.getItem('nest_verified_downloads') || '232');
-        if (isNaN(currentCount) || currentCount < 232) currentCount = 232;
+        // Initialize immediately from saved state (starts at 251 or higher, never resets)
+        let currentCount = parseInt(localStorage.getItem('nest_verified_downloads') || '251');
+        if (isNaN(currentCount) || currentCount < 251) currentCount = 251;
         counterEl.innerText = formatNumber(currentCount);
 
         function recordDownload() {
